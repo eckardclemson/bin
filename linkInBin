@@ -1,0 +1,9 @@
+# Script to create symlinks of the files in this repo in ~/bin
+
+ln -s ${PWD}/cuvpn ${HOME}/bin
+ln -s ${PWD}/rdesktop.vdi ${HOME}/bin
+ln -s ${PWD}/spectrum ${HOME}/bin
+ln -s ${PWD}/vmware-view.vdi ${HOME}/bin
+cd ${HOME}/bin
+ln -s vdi.rdesktop rdesktop.vdi
+ln -s vdi.vmware-view vmware-view.vdi
