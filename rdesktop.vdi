@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -sp "VDI password: " password
+
+rdesktop -u eckard -d campus -p "${password}" -g 1580x850 -z -x b vdi
