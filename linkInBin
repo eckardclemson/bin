@@ -1,9 +1,11 @@
 # Script to create symlinks of the files in this repo in ~/bin
 
+# TODO:  check if there already, prompt to overwrite
 ln -s ${PWD}/cuvpn ${HOME}/bin
 ln -s ${PWD}/rdesktop.vdi ${HOME}/bin
 ln -s ${PWD}/spectrum ${HOME}/bin
 ln -s ${PWD}/vmware-view.vdi ${HOME}/bin
-cd ${HOME}/bin
-ln -s vdi.rdesktop rdesktop.vdi
-ln -s vdi.vmware-view vmware-view.vdi
+pushd ${HOME}/bin
+ln -s rdesktop.vdi vdi.rdesktop
+ln -s vmware-view.vdi vdi.vmware-view
+popd
