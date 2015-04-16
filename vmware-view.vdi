@@ -1,5 +1,8 @@
 #!/bin/bash
 
+resolution="2500x1500"
+#resolution="1580x820"
+
 read -sp "VDI password: " password
 
-vmware-view.bin -u eckard -d campus --save -p "${password}" --desktopSize=1580x820
+vmware-view.bin -u eckard -d campus --protocol=RDP --save -p "${password}" --desktopSize="${resolution}"
