@@ -1,5 +1,8 @@
 #!/bin/bash
 
-read -sp "VDI password: " password
+#resolution="1580x850"
+resolution="2550x1550"
 
-rdesktop -u eckard -d campus -p "${password}" -g 1580x850 -z -x b vdi
+echo -n "VDI "
+
+rdesktop -u eckard -d campus -g "${resolution}" -p - -z -x b -E -r clipboard:PRIMARYCLIPBOARD jasvdi
