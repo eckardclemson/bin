@@ -1,1 +1,7 @@
-sudo openconnect --user=eckard cuvpn.clemson.edu
+#!/bin/bash
+
+HOST='cuvpn.clemson.edu'
+FINGERPRINT='4264C88600A46A93BF0CDF9C6D29FC1DFAE0DC61'
+
+sudo openconnect --user=eckard ${HOST} --servercert ${FINGERPRINT}
+
