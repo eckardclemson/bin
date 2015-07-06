@@ -2,6 +2,7 @@
 
 # TODO:  check if there already, prompt to overwrite
 ln -s ${PWD}/cuvpn ${HOME}/bin
+ln -s ${PWD}/vpnc-script ${HOME}/bin
 ln -s ${PWD}/rdesktop.vdi ${HOME}/bin
 ln -s ${PWD}/spectrum ${HOME}/bin
 ln -s ${PWD}/vmware-view.vdi ${HOME}/bin
