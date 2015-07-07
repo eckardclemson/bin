@@ -1,5 +1,11 @@
 #!/bin/sh
 
+DISTRO_SCRIPT=/usr/share/vpnc-scripts/vpnc-script
+
+if [ ! -f $DISTRO_SCRIPT ]; then
+        DISTRO_SCRIPT=/etc/vpnc/vpnc-script
+fi
+
 CISCO_SPLIT_INC=2 \
 CISCO_SPLIT_INC_0_ADDR=130.127.0.0 \
 CISCO_SPLIT_INC_0_MASK=255.255.0.0 \
@@ -21,4 +27,4 @@ CISCO_SPLIT_INC_4_ADDR=192.168.10.0 \
 CISCO_SPLIT_INC_4_MASK=255.255.255.0 \
 CISCO_SPLIT_INC_4_MASKLEN=24 \
 CISCO_SPLIT_INC_4_PROTOCOL=0 \
-/usr/share/vpnc-scripts/vpnc-script
+$DISTRO_SCRIPT
