@@ -1,7 +1,10 @@
 #!/bin/bash
 
-#resolution="1580x850"
-resolution="2550x1550"
+resolution="1580x850"
+
+if [[ "zetta" == $(hostname) ]] ; then
+        resolution="2550x1550"
+fi
 
 echo -n "VDI "
 
