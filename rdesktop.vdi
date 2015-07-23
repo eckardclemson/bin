@@ -1,8 +1,10 @@
 #!/bin/bash
 
+host="${1:-jasvdi}"
+
 #resolution="1580x850"
 resolution="2550x1550"
 
 echo -n "VDI "
 
-rdesktop -u eckard -d campus -g "${resolution}" -p - -z -x b -E -r clipboard:PRIMARYCLIPBOARD jasvdi
+rdesktop -u eckard -d campus -g "${resolution}" -p - -z -x b -E -r clipboard:PRIMARYCLIPBOARD "${host}"
