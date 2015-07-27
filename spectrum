@@ -1,3 +1,9 @@
 #!/bin/bash
 
-javaws.itweb ~/bin/spectrum.jnlp
+JAVAWS=javaws
+
+if [[ "redhatx" == "${DISTRO}x" ]] ; then
+        JAVAWS=javaws.itweb
+fi
+
+"${JAVAWS}" ~/bin/spectrum.jnlp
