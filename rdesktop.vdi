@@ -2,10 +2,12 @@
 
 host="${1:-jasvdi}"
 
-resolution="1580x850"
+resolution="1410x850"
 
 if [[ "zetta" == $(hostname) ]] ; then
         resolution="2550x1550"
+elif [[ "tiger" == $(hostname) ]] ; then
+        resolution="1800x1040"
 fi
 
 echo -n "VDI "
