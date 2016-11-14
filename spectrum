@@ -2,8 +2,11 @@
 
 JAVAWS=javaws
 
-if [[ "redhatx" == "${DISTRO}x" ]] ; then
+#if [[ "redhatx" == "${DISTRO}x" ]] ; then
+if [[ -e "/etc/redhat-release" ]] ; then
         JAVAWS=javaws.itweb
 fi
+
+#echo distro=${DISTRO} javaws=${JAVAWS}
 
 "${JAVAWS}" ~/bin/spectrum.jnlp
