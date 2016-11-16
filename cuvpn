@@ -1,8 +1,6 @@
 #!/bin/bash
 
 HOST='cuvpn.clemson.edu'
-FINGERPRINT='4264C88600A46A93BF0CDF9C6D29FC1DFAE0DC61'
 SCRIPT="${HOME}/bin/vpnc-script"
 
-#sudo openconnect --script=${SCRIPT} --user=eckard ${HOST} --servercert ${FINGERPRINT}
-sudo openconnect --script=${SCRIPT} --user=eckard ${HOST}
+sudo openconnect --script=${SCRIPT} --user=eckard ${HOST} --timestamp --deflate
