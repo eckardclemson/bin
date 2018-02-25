@@ -1,22 +1,22 @@
 # bin
 Various scripts to make life at Clemson easier.
 
-= cuvpn =
+## cuvpn
 Script to connect to Clemson Cisco VPN using OpenConnect.
 
-= linkInBin =
+## linkInBin
 Script to symlink these files into user's `~/bin` directory.
 
-= rdesktop.vdi =
+## rdesktop.vdi
 Script to connect to my VDI instance using rdesktop.
 
-= spectrum =
+## spectrum
 Script to launch the Spectrum java web app (assumes spectrum.jnlp
 already downloaded).
 
-= vmware-view.vdi =
+## vmware-view.vdi
 Script to connect to my VDI instance using vmware-view (assumes
 vmware-view is installed and working.
 
-= vpnc-script =
+## vpnc-script
 OpenConnect script used by `cuvpn`.
