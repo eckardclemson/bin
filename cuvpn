@@ -3,4 +3,8 @@
 HOST='cuvpn.clemson.edu'
 SCRIPT="${HOME}/bin/vpnc-script"
 
+if [[ "cudrvpn" == "${0##*/}" ]]; then
+        HOST='cudrvpn.clemson.edu'
+fi
+
 sudo openconnect --script=${SCRIPT} --user=eckard ${HOST} --timestamp --deflate
