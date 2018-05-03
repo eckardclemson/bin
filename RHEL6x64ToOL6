@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Script to convert an existing RHEL 6 box to Oracle Linux 6
+# NOTE:  To be run on the box in question
+# NOTE:  Suggested to not run this as a script, but to watch errors as
+#        they come along
+# NOTE:  To be run as root
+
+#spacewalk="ccitsw01.clemson.edu"
+spacewalk="cuihhspspw01.clemson.edu"
+
+sed -i 's/enabled=1/enabled=0/g;' /etc/yum.repos.d/*.repo
+
+#cat >/etc/yum.repos.d/spacewalk20-client.repo <<EOF
+#[ol6_spacewalk20_client]
+#name=Spacewalk Client 2.0 for Oracle Linux 6 (\$basearch)
+#baseurl=http://${spacewalk}/pub/repo/ol6_spacewalk20_client
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+#gpgcheck=1
+#enabled=1
+#EOF
+#
+#cd /etc/pki/rpm-gpg/
+#
+#wget --no-check-certificate https://${spacewalk}/pub/RPM-GPG-KEY-oracle-ol6
+#wget --no-check-certificate https://${spacewalk}/pub/RPM-GPG-KEY-EPEL-6
+#wget --no-check-certificate https://${spacewalk}/pub/RPM-GPG-KEY-shibboleth
+#wget --no-check-certificate https://${spacewalk}/pub/RPM-GPG-KEY-sse
+#
+#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle-ol6
+#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-shibboleth
+#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-sse
+
+yum remove -y rhn-client-tools-migrate up2date
+yum install rhn-client-tools rhn-check rhn-setup rhnsd m2crypto yum-rhn-plugin -y
+
+cd /usr/share/rhn
+rm -f RHN-ORG-TRUSTED-SSL-CERT
+wget https://${spacewalk}/pub/RHN-ORG-TRUSTED-SSL-CERT
+
+echo "Registering to Spacewalk, this will take a moment..."
+rhnreg_ks --force --activationkey=2-oraclelinux6-x86_64 --sslCACert=/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT --serverUrl=https://${spacewalk}/XMLRPC
+echo "Finished"
+
+# Disable the spacewalk repo created above
+sed -i 's/enabled=1/enabled=0/g;' /etc/yum.repos.d/*.repo
+
+#yum install osad -y
+#perl -pi -w -e 's/osa_ssl_cert =/osa_ssl_cert = \/usr\/share\/rhn\/RHN-ORG-TRUSTED-SSL-CERT/g;' /etc/sysconfig/rhn/osad.conf
+#service osad start
+
+#yum update --skip-broken --nogpgcheck -y
+yum update -y
+# Install UEK kernel?  Alter GRUB? Reboot?
+
+cat /etc/issue
