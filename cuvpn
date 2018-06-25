@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Script to connect to Clemson's Cisco VPN
+# to disconnect daily at 18:00:
+# 00   18 *   *   *   killall openconnect
+# or copy crontab.d/killVpn to /etc/crontab.d
+
 HOST='cuvpn.clemson.edu'
 SCRIPT="${HOME}/bin/vpnc-script"
 
